@@ -1,11 +1,11 @@
 import React from "react";
 import Header from "../../CommonComponent/Header";
-import Input from '../../CommonComponent/Input'
+import Input from "../../CommonComponent/Input";
 import Footer from "../../CommonComponent/Footer";
-import TextArea from '../../CommonComponent/Textarea';
-import Button from '../../CommonComponent/Button';
+import TextArea from "../../CommonComponent/Textarea";
+import Button from "../../CommonComponent/Button";
 
-import './style.css'
+import "./style.css";
 
 const AddPoem = props => {
   const [title, setTitle] = React.useState("");
@@ -31,7 +31,7 @@ const AddPoem = props => {
 
       fetch("/api/v1/poems", {
         method: "post",
-        headers: { 'content-type': 'application/json' },
+        headers: { "content-type": "application/json" },
         body: JSON.stringify({
           data: { title: title, poem: poem }
         })
@@ -40,7 +40,7 @@ const AddPoem = props => {
         .then(data => {
           props.history.push("/poems");
         })
-        .catch((error) => {
+        .catch(error => {
           setButtonContent("Save");
           setFetchError(true);
         });
@@ -53,7 +53,7 @@ const AddPoem = props => {
       <main className="add-poem-page">
         <section className="add-poem__section">
           <h2 className="add-poem__title">Add a Poem</h2>
-          <form className="add-poem__form" >
+          <form className="add-poem__form">
             <Input
               id="new-poem__title"
               placeholder="Title here..."
@@ -71,23 +71,13 @@ const AddPoem = props => {
               type="text"
               action={e => setPoem(e.target.value)}
             />
-            {error
-              &&
-              <p className="add-poem__error">
-                {message.default}
-              </p>
-            }
+            {error && <p className="add-poem__error">{message.default}</p>}
 
-            {fetchError
-              &&
-              <p className="add-poem__error">
-                {message.fetch}
-              </p>
-            }
+            {fetchError && <p className="add-poem__error">{message.fetch}</p>}
             <div className="add-poem__form__button">
               <Button
-                name='Back'
-                onClick={() => props.history.push('/poems')}
+                name="Back"
+                onClick={() => props.history.push("/poems")}
                 className="large-skip__button"
               />
               <Button

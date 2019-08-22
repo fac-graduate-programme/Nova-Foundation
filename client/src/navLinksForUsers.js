@@ -30,7 +30,7 @@ export default [
   { path: "/add-poem", component: AddPoem },
   // { path: "/add-story", component: AddStory },
   // { path: "/pictures", component: PicturesPage },
-  // { path: "/poems", component: Poems },
+  { path: "/poems", component: Poems },
   // { path: "/stories", component: Stories },
   { path: "/information", component: Information }
   // { path: "/suggestion", component: Suggestion },
