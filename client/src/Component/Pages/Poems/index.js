@@ -5,41 +5,44 @@ import Header from "../../CommonComponent/Header";
 import Footer from "../../CommonComponent/Footer";
 import Button from "../../CommonComponent/Button";
 
-const Poems = (props) => {
+const Poems = props => {
   const [poems, setPoems] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   useEffect(() => {
     if (!loading) {
-      fetch('/api/v1/poems')
+      fetch("/api/v1/poems")
         .then(res => res.json())
         .then(({ data, error }) => {
-          if (error) setError('Something Error Please Try Again')
+          if (error) setError("Something Error Please Try Again");
           else setPoems(data);
-          setLoading(true)
+          setLoading(true);
         })
         .catch(() => {
-          setError('Something Error Please Try Again')
-        })
+          setError("Something Error Please Try Again");
+        });
     }
   });
   return (
     <div>
       <Header />
       {error && <p className="error">{error}</p>}
-      {loading ?
+      {loading ? (
         <>
           <PoemList poems={poems} {...props} />
           <div className="poem-buttons">
-            <Button className="large-back__button" name="Back" onClick={() => props.history.goBack()} />
+            <Button
+              className="large-back__button"
+              name="Back"
+              onClick={() => props.history.goBack()}
+            />
             <Button className="register__button" name="More Poems" />
           </div>
         </>
-        : null}
+      ) : null}
       <Footer />
     </div>
-
   );
 };
 
