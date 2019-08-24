@@ -1,10 +1,21 @@
 import React from "react";
-import ReadMoreAndLess from "react-read-more-less";
+import ReadMoreReact from "read-more-react";
 
 import AddIcon from "../../CommonComponent/AddIcon";
 import "./style.css";
 
 const PoemList = ({ poems, ...rest }) => {
+  // const [state, setState] = useState(false);
+
+  // const toggle = () => {
+  //   state = {
+  //     on: false
+  //   };
+  //   this.setState({
+  //     on: !this.state.on
+  //   });
+  // };
+
   return (
     <div className="poems-container">
       <div className="poems__header">
@@ -15,15 +26,14 @@ const PoemList = ({ poems, ...rest }) => {
         poems.map((poem, index) => (
           <div className="poems-box" key={index}>
             <h4 className="poem-title">{poem.title}</h4>
-
-            <ReadMoreAndLess
-              className="poems-body"
-              charLimit={50}
-              readMoreText="Read More"
-              readLessText="Read less"
-            >
-              {poem.content}
-            </ReadMoreAndLess>
+            <ReadMoreReact
+              text={poem.content}
+              min={90}
+              ideal={100}
+              max={200}
+              readMoreText="...Read More"
+              onClick={() => rest.history.push("/single-poem")}
+            />
           </div>
         ))
       ) : (
