@@ -28,7 +28,7 @@
   "homepage": "https://github.com/fac-graduate-programme/Nova-Foundation#readme",
   "dependencies": {
     "axios": "^0.19.0",
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "cloudinary": "^1.14.0",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.4",
